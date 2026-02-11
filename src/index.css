@@ -1,0 +1,397 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background-color: #051a1a;
+  min-height: 100vh;
+  color: #e0e0e0;
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+input,
+a {
+  transition: all 0.3s ease-out;
+}
+
+/* Custom slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: linear-gradient(to top, rgba(255, 107, 53, 0.3), rgba(255, 159, 28, 0.1));
+  border-radius: 8px;
+  height: 100%;
+  width: 8px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(135deg, #ff6b35, #ff9f1c);
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  margin-left: -8px;
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 25px rgba(255, 107, 53, 0.9);
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-track {
+  background: linear-gradient(to top, rgba(255, 107, 53, 0.3), rgba(255, 159, 28, 0.1));
+  border-radius: 8px;
+  height: 100%;
+  width: 8px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: linear-gradient(135deg, #ff6b35, #ff9f1c);
+  border: none;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  box-shadow: 0 0 25px rgba(255, 107, 53, 0.9);
+  transform: scale(1.1);
+}
+
+/* Vertical slider container */
+.vertical-slider {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 8px;
+  height: 150px;
+}
+
+/* Glow animation keyframes */
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0.85;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+
+  75% {
+    opacity: 0.8;
+  }
+}
+
+.fire-glow {
+  animation: flicker 3s ease-in-out infinite;
+}
+
+/* Subtle pulse animation for active elements */
+@keyframes subtle-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.pulse-active {
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+/* Button hover lift effect */
+button:hover {
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Smooth fade-in for page load */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Slider channel hover effect */
+.slider-channel {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.slider-channel:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Glass morphism effect for control panel */
+.glass-panel {
+  background: rgba(5, 26, 26, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+/* Responsive font scaling */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Rain drop falling animation */
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+}
+
+.rain-drop {
+  animation: rain-fall 0.8s linear infinite;
+}
+
+/* Rain splash effect */
+@keyframes splash {
+  0% {
+    r: 0;
+    opacity: 0.8;
+    stroke-width: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    r: 5;
+    opacity: 0;
+    stroke-width: 0.2;
+  }
+}
+
+.splash {
+  animation: splash 0.8s ease-out infinite;
+}
+
+/* Wind sway animation for fire */
+@keyframes wind-sway {
+
+  0%,
+  100% {
+    transform: translateX(0) skewX(0deg);
+  }
+
+  25% {
+    transform: translateX(3px) skewX(2deg);
+  }
+
+  50% {
+    transform: translateX(-2px) skewX(-1deg);
+  }
+
+  75% {
+    transform: translateX(4px) skewX(3deg);
+  }
+}
+
+.wind-sway {
+  animation: wind-sway 0.8s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* Firefly blinking animation */
+@keyframes firefly-blink {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  15% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px #98ff98);
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  65% {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 6px #98ff98);
+  }
+
+  80% {
+    opacity: 0.5;
+  }
+}
+
+.firefly {
+  animation: firefly-blink 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px #98ff98);
+}
+
+/* Lake lapping wave animation */
+@keyframes lake-lap {
+
+  0%,
+  100% {
+    transform: translateY(0) scaleX(1);
+  }
+
+  25% {
+    transform: translateY(-1px) scaleX(1.02);
+  }
+
+  50% {
+    transform: translateY(1px) scaleX(0.98);
+  }
+
+  75% {
+    transform: translateY(-0.5px) scaleX(1.01);
+  }
+}
+
+.lake-lap {
+  animation: lake-lap 2s ease-in-out infinite;
+}
+
+/* Wave animations - flowing upward toward campfire */
+@keyframes wave-flow-1 {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes wave-flow-2 {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes wave-flow-3 {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.wave-1 {
+  animation: wave-flow-1 2.5s ease-in-out infinite;
+}
+
+.wave-2 {
+  animation: wave-flow-2 3.125s ease-in-out infinite;
+  animation-delay: 0.375s;
+}
+
+.wave-3 {
+  animation: wave-flow-3 3.75s ease-in-out infinite;
+  animation-delay: 0.75s;
+}
+
+/* Foam on shore */
+@keyframes foam-appear {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scaleX(0.8);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scaleX(1.1);
+  }
+}
+
+.foam {
+  animation: foam-appear 2.5s ease-in-out infinite;
+}
